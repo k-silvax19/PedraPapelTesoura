@@ -1,79 +1,108 @@
 ﻿using System.Reflection;
+using System.Reflection.Metadata;
 using System.Security.Cryptography;
-while (true)
+class Program
 {
-    Console.Clear();
-    Console.WriteLine("=============================");
-    Console.WriteLine("Pedra, Papel e Tesoura");
-    Console.WriteLine("=============================");
-
-    Console.WriteLine("1 - Pedra");
-    Console.WriteLine("2 - Papel");
-    Console.WriteLine("3 - Tesoura");
-
-    Console.Write("Digite Uma Jogada: ");
-    string? OperacaoSelecionada = Console.ReadLine();
-
-    string jogadaComputador;
-    string jogadaJogador;
-
-    switch (OperacaoSelecionada)
+    static void Main()
     {
-        case "1":
-            jogadaJogador = "Pedra";
-            break;
+        bool continuar = true;
+        while (continuar)
+        {
+            ExibirCabecalho();
 
-        case "2":
-            jogadaJogador = "Papel";
-            break;
+            string jogadaJogador = ObterJogadaJogador();
 
-        case "3":
-            jogadaJogador = "Tesoura";
-            break;
+            string jogadaComputador = ExecutarRodadaComputador();
 
-        default:
-            Console.WriteLine("Opção inválida!");
-            Console.ReadLine();
-            continue;
+            ExecutarRodada(jogadaJogador, jogadaComputador);
+
+            Console.Write("DESEJA CONTINUAR? s/N ");
+            string? desejaContinuar = Console.ReadLine();
+
+            if (desejaContinuar?.ToUpper() != "S")
+                break;
+        }
     }
 
-    //Computador
-    int numeroComputador = RandomNumberGenerator.GetInt32(1, 4);
-    if (numeroComputador == 1)
+    static string ExecutarRodadaComputador()
     {
-        jogadaComputador = "Pedra";
-    }
-    else if (numeroComputador == 2)
-    {
-        jogadaComputador = "Papel";
-    }
-    else
-    {
-        jogadaComputador = "Tesoura";
+        string jogadaComputador;
+
+        int numeroComputador = RandomNumberGenerator.GetInt32(1, 4);
+        if (numeroComputador == 1)
+        {
+            jogadaComputador = "Pedra";
+        }
+        else if (numeroComputador == 2)
+        {
+            jogadaComputador = "Papel";
+        }
+        else
+        {
+            jogadaComputador = "Tesoura";
+        }
+
+        return jogadaComputador;
     }
 
-    //Jogador
-    if (jogadaJogador == jogadaComputador)
+    static void ExecutarRodada(string jogadaJogador, string jogadaComputador)
     {
-
-        Console.WriteLine("Empate!");
+        if (jogadaJogador == jogadaComputador)
+        {
+            Console.WriteLine("Empate!");
+        }
+        else if (
+            (jogadaJogador == "Pedra" && jogadaComputador == "Tesoura") ||
+            (jogadaJogador == "Tesoura" && jogadaComputador == "Papel") ||
+            (jogadaJogador == "Papel" && jogadaComputador == "Pedra")
+        )
+        {
+            Console.WriteLine($"Você jogou {jogadaJogador}, você venceu");
+        }
+        else
+        {
+            Console.WriteLine($"Computador jogou {jogadaComputador}, o Computador venceu!");
+        }
     }
-    else if (
-        (jogadaJogador == "Pedra" && jogadaComputador == "Tesoura") ||
-        (jogadaJogador == "Tesoura" && jogadaComputador == "Papel") ||
-        (jogadaJogador == "Papel" && jogadaComputador == "Pedra")
-    )
+
+    static void ExibirCabecalho()
     {
-        Console.WriteLine($"Você jogou {jogadaJogador}, você venceu");
+        Console.Clear();
+        Console.WriteLine("=============================");
+        Console.WriteLine("Pedra, Papel e Tesoura");
+        Console.WriteLine("=============================");
     }
-    else
+
+    static string ObterJogadaJogador()
     {
-        Console.WriteLine($"Computador jogou {jogadaComputador}, o Computador venceu!");
+        Console.WriteLine("1 - Pedra");
+        Console.WriteLine("2 - Papel");
+        Console.WriteLine("3 - Tesoura");
+
+        Console.Write("Digite Uma Jogada: ");
+        string? OperacaoSelecionada = Console.ReadLine();
+
+        string jogadaJogador = "";
+
+        switch (OperacaoSelecionada)
+        {
+            case "1":
+                jogadaJogador = "Pedra";
+                break;
+
+            case "2":
+                jogadaJogador = "Papel";
+                break;
+
+            case "3":
+                jogadaJogador = "Tesoura";
+                break;
+
+            default:
+                Console.WriteLine("Opção inválida!");
+                Console.ReadLine();
+                break;
+        }
+        return jogadaJogador;
     }
-
-    Console.Write("DESEJA CONTINUAR? s/N ");
-    string? desejaContinuar = Console.ReadLine();
-
-    if (desejaContinuar?.ToUpper() != "S")
-        break;
 }

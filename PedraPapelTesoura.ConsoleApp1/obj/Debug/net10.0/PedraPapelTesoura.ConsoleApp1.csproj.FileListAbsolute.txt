@@ -12,3 +12,4 @@ C:\Users\kauan\Documents\PedraPapelTesoura\PedraPapelTesoura.ConsoleApp1\obj\Deb
 C:\Users\kauan\Documents\PedraPapelTesoura\PedraPapelTesoura.ConsoleApp1\obj\Debug\net10.0\PedraPapelTesoura.ConsoleApp1.pdb
 C:\Users\kauan\Documents\PedraPapelTesoura\PedraPapelTesoura.ConsoleApp1\obj\Debug\net10.0\PedraPapelTesoura.ConsoleApp1.genruntimeconfig.cache
 C:\Users\kauan\Documents\PedraPapelTesoura\PedraPapelTesoura.ConsoleApp1\obj\Debug\net10.0\ref\PedraPapelTesoura.ConsoleApp1.dll
+C:\Users\kauan\Documents\PedraPapelTesoura\PedraPapelTesoura.ConsoleApp1\obj\Debug\net10.0\PedraPapelTesoura.ConsoleApp1.sourcelink.json
