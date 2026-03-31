@@ -4,7 +4,9 @@ class Rodada
     {
         if (jogadaJogador == jogadaComputador)
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine($"Empate!, Você Jogou {jogadaJogador} e o Computador jogou {jogadaComputador}");
+            Console.ForegroundColor = ConsoleColor.White;
         }
         else if (
             (jogadaJogador == "Pedra" && jogadaComputador == "Tesoura") ||
@@ -12,11 +14,15 @@ class Rodada
             (jogadaJogador == "Papel" && jogadaComputador == "Pedra")
         )
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Você jogou {jogadaJogador} e o Computador Jogou {jogadaComputador}, Você venceu!");
+            Console.ForegroundColor = ConsoleColor.White;
         }
         else
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Computador jogou {jogadaComputador} e você jogou {jogadaJogador}, o Computador venceu!");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

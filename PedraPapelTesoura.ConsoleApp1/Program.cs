@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
 class Program
 {
     static void Main()
@@ -15,10 +16,7 @@ class Program
 
             Rodada.ExecutarRodada(jogadaJogador, jogadaComputador);
 
-            Console.Write("DESEJA CONTINUAR? s/N ");
-            string? desejaContinuar = Console.ReadLine();
-
-            if (desejaContinuar?.ToUpper() != "S")
+            if (!Desejacontinuar())
                 break;
         }
     }
@@ -26,8 +24,22 @@ class Program
     static void ExibirCabecalho()
     {
         Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("=============================");
-        Console.WriteLine("Pedra, Papel e Tesoura");
+        Console.WriteLine("Pedra, Papel, Tesoura");
         Console.WriteLine("=============================");
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    static bool Desejacontinuar()
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write("DESEJA CONTINUAR? s/N ");
+        Console.ForegroundColor = ConsoleColor.White;
+        string? desejaContinuar = Console.ReadLine();
+
+        if (desejaContinuar?.ToUpper() != "S")
+            return false;
+        return true;
     }
 }

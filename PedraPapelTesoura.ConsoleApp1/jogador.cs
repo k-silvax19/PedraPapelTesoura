@@ -6,9 +6,13 @@ class Jogador
 
         do
         {
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("1 - Pedra");
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("2 - Papel");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("3 - Tesoura");
+            Console.ForegroundColor = ConsoleColor.White;
 
             Console.Write("Digite Uma Jogada: ");
             string? OperacaoSelecionada = Console.ReadLine();
@@ -29,9 +33,11 @@ class Jogador
                     break;
 
                 default:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Opção inválida!");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
-                    break;
+                    continue;
             }
             return jogadaJogador;
         } while (true);
