@@ -4,7 +4,7 @@ class Rodada
     {
         if (jogadaJogador == jogadaComputador)
         {
-            Console.WriteLine("Empate!");
+            Console.WriteLine($"Empate!, Você Jogou {jogadaJogador} e o Computador jogou {jogadaComputador}");
         }
         else if (
             (jogadaJogador == "Pedra" && jogadaComputador == "Tesoura") ||
@@ -12,11 +12,11 @@ class Rodada
             (jogadaJogador == "Papel" && jogadaComputador == "Pedra")
         )
         {
-            Console.WriteLine($"Você jogou {jogadaJogador}, você venceu");
+            Console.WriteLine($"Você jogou {jogadaJogador} e o Computador Jogou {jogadaComputador}, Você venceu!");
         }
         else
         {
-            Console.WriteLine($"Computador jogou {jogadaComputador}, o Computador venceu!");
+            Console.WriteLine($"Computador jogou {jogadaComputador} e você jogou {jogadaJogador}, o Computador venceu!");
         }
     }
 }

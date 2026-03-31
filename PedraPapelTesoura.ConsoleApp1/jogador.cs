@@ -2,34 +2,38 @@ class Jogador
 {
     public static string ObterJogadaJogador()
     {
-        Console.WriteLine("1 - Pedra");
-        Console.WriteLine("2 - Papel");
-        Console.WriteLine("3 - Tesoura");
-
-        Console.Write("Digite Uma Jogada: ");
-        string? OperacaoSelecionada = Console.ReadLine();
-
         string jogadaJogador = "";
 
-        switch (OperacaoSelecionada)
+        do
         {
-            case "1":
-                jogadaJogador = "Pedra";
-                break;
+            Console.WriteLine("1 - Pedra");
+            Console.WriteLine("2 - Papel");
+            Console.WriteLine("3 - Tesoura");
 
-            case "2":
-                jogadaJogador = "Papel";
-                break;
+            Console.Write("Digite Uma Jogada: ");
+            string? OperacaoSelecionada = Console.ReadLine();
 
-            case "3":
-                jogadaJogador = "Tesoura";
-                break;
 
-            default:
-                Console.WriteLine("Opção inválida!");
-                Console.ReadLine();
-                break;
-        }
-        return jogadaJogador;
+            switch (OperacaoSelecionada)
+            {
+                case "1":
+                    jogadaJogador = "Pedra";
+                    break;
+
+                case "2":
+                    jogadaJogador = "Papel";
+                    break;
+
+                case "3":
+                    jogadaJogador = "Tesoura";
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida!");
+                    Console.ReadLine();
+                    break;
+            }
+            return jogadaJogador;
+        } while (true);
     }
 }
