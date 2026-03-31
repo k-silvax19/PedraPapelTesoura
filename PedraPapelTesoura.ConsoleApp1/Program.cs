@@ -1,79 +1,45 @@
 ﻿using System.Reflection;
-using System.Security.Cryptography;
-while (true)
+using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
+class Program
 {
-    Console.Clear();
-    Console.WriteLine("=============================");
-    Console.WriteLine("Pedra, Papel e Tesoura");
-    Console.WriteLine("=============================");
-
-    Console.WriteLine("1 - Pedra");
-    Console.WriteLine("2 - Papel");
-    Console.WriteLine("3 - Tesoura");
-
-    Console.Write("Digite Uma Jogada: ");
-    string? OperacaoSelecionada = Console.ReadLine();
-
-    string jogadaComputador;
-    string jogadaJogador;
-
-    switch (OperacaoSelecionada)
+    static void Main()
     {
-        case "1":
-            jogadaJogador = "Pedra";
-            break;
+        bool continuar = true;
+        while (continuar)
+        {
+            ExibirCabecalho();
 
-        case "2":
-            jogadaJogador = "Papel";
-            break;
+            string jogadaJogador = Jogador.ObterJogadaJogador();
 
-        case "3":
-            jogadaJogador = "Tesoura";
-            break;
+            string jogadaComputador = Computador.ExecutarRodadaComputador();
 
-        default:
-            Console.WriteLine("Opção inválida!");
-            Console.ReadLine();
-            continue;
+            Rodada.ExecutarRodada(jogadaJogador, jogadaComputador);
+
+            if (!Desejacontinuar())
+                break;
+        }
     }
 
-    //Computador
-    int numeroComputador = RandomNumberGenerator.GetInt32(1, 4);
-    if (numeroComputador == 1)
+    static void ExibirCabecalho()
     {
-        jogadaComputador = "Pedra";
-    }
-    else if (numeroComputador == 2)
-    {
-        jogadaComputador = "Papel";
-    }
-    else
-    {
-        jogadaComputador = "Tesoura";
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("=============================");
+        Console.WriteLine("Pedra, Papel, Tesoura");
+        Console.WriteLine("=============================");
+        Console.ForegroundColor = ConsoleColor.White;
     }
 
-    //Jogador
-    if (jogadaJogador == jogadaComputador)
+    static bool Desejacontinuar()
     {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write("DESEJA CONTINUAR? s/N ");
+        Console.ForegroundColor = ConsoleColor.White;
+        string? desejaContinuar = Console.ReadLine();
 
-        Console.WriteLine("Empate!");
+        if (desejaContinuar?.ToUpper() != "S")
+            return false;
+        return true;
     }
-    else if (
-        (jogadaJogador == "Pedra" && jogadaComputador == "Tesoura") ||
-        (jogadaJogador == "Tesoura" && jogadaComputador == "Papel") ||
-        (jogadaJogador == "Papel" && jogadaComputador == "Pedra")
-    )
-    {
-        Console.WriteLine($"Você jogou {jogadaJogador}, você venceu");
-    }
-    else
-    {
-        Console.WriteLine($"Computador jogou {jogadaComputador}, o Computador venceu!");
-    }
-
-    Console.Write("DESEJA CONTINUAR? s/N ");
-    string? desejaContinuar = Console.ReadLine();
-
-    if (desejaContinuar?.ToUpper() != "S")
-        break;
 }
